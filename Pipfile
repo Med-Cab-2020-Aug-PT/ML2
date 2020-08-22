@@ -16,6 +16,7 @@ scikit-learn = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
 spacy = "*"
+flask-pymongo = "*"
 
 [requires]
 python_version = "3.7"
