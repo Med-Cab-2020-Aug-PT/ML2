@@ -6,12 +6,16 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+requests = "*"
 pandas = "*"
 flask = "*"
-gunicorn = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
+python-dotenv = "*"
 scikit-learn = "*"
+gunicorn = "*"
+psycopg2-binary = "*"
 spacy = "*"
-en-core-web-lg = "*"
 
 [requires]
 python_version = "3.7"
