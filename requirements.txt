@@ -1,0 +1,8 @@
+requests
+pandas
+Flask
+gunicorn
+psycopg2-binary
+python-dotenv
+spacy
+scikit-learn
