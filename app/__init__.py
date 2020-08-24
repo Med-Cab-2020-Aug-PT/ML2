@@ -1,7 +1,6 @@
 # app/__init__.py
 
+from app.main import API
 
-import os
-
-from flask import Flask
+__all__ = ('API',)
 
