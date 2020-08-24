@@ -5,11 +5,11 @@ API = Flask(__name__)
 
 @API.route('/')
 def index():
-    return "App Online"
+    return jsonify("App Online")
 
 @API.route('/search/<user_input>')
 def search(user_input):
-    bot = PredictionBot
+    bot = PredictionBot()
     return jsonify(bot.predict(user_input))
 
 

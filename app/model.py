@@ -23,7 +23,16 @@ class PredictionBot:
     """NLP Bot for Cannabis Suggestion App"""
 
     def predict(self, user_input):
-        return "Output"
+        return {
+            '_id': 0, 
+            'Name': 'Sour_Diesel', 
+            'Effects': ['High', 'Happy', 'Hungry', 'Sleepy'],
+            'Flavors': ['Sour', 'Fuel', 'Apple'],
+            'Description': 'Sour Diesel is an aphrodisiac that produces a thick cloud', 
+            'Nearest': ['Diesel', 'Sour Apple', 'Cherry Pie', 'Kush', 'Pineapple Express'], 
+            'Rating': 4.7,
+            'Type': 'Hybrid', 
+        }
 
 if __name__ == "__main__":
     bot = PredictionBot()
