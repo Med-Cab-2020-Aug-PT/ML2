@@ -1,5 +1,11 @@
 #app/model.py
 
+"""
+NLP Model for DS Build Week
+Input  --> TF-IDF -->  Cosine_Similarity --> Output
+Input  --> TF-IDF -->  Cosine_Similarity --> Output
+"""
+
 import pandas as pd 
 import os
 
