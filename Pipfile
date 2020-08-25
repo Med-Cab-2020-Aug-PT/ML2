@@ -18,6 +18,7 @@ psycopg2-binary = "*"
 spacy = "*"
 flask-pymongo = "*"
 dnspython = "*"
+pymongo = "*"
 
 [requires]
 python_version = "3.7"
