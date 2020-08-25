@@ -10,9 +10,9 @@ load_dotenv()
 
 DB_USER = os.getenv("MONGO_USER", default="OOPS")
 DB_PASSWORD = os.getenv("MONGO_PASSWORD", default="OOPS")
-CLUSTER_NAME = os.getenv("MONGO_URI", default="OOPS")
+DB_URI = os.getenv("MONGO_URI", default="OOPS")
 
-client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{CLUSTER_NAME}/test?retryWrites=true&w=majority")
+client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{DB_URI}/test?retryWrites=true&w=majority")
 
 def make_db():
     db =  client.medcabinet.strain
