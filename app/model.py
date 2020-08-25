@@ -31,7 +31,7 @@ FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'csv', 'cannabis.csv'
 class PredictionBot:
     """NLP Bot for Cannabis Suggestion App"""
 
-    db =  client.strain_table.strain
+    db =  client.medcabinet.strain
 
     df = pd.read_csv(FILEPATH)
 

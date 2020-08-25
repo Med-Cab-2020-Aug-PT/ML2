@@ -15,7 +15,7 @@ CLUSTER_NAME = os.getenv("MONGO_URI", default="OOPS")
 client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{CLUSTER_NAME}/test?retryWrites=true&w=majority")
 
 def make_db():
-    db =  client.strain_table.strain
+    db =  client.medcabinet.strain
 
     df = pd.read_csv('cannabis.csv')
     data = df.to_dict(orient='records')
