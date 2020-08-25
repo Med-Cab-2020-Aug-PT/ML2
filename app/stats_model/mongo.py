@@ -2,21 +2,19 @@
 
 import os
 import pandas as pd
-import pymongo
 
 from  pymongo import MongoClient
 from dotenv import load_dotenv
 
 load_dotenv()
 
-DB_USER = os.getenv("MONGO_USER", default="OOPS")
-DB_PASSWORD = os.getenv("MONGO_PASSWORD", default="OOPS")
-URI = os.getenv("MONGO_URI", default="OOPS")
-
-client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{URI}/test?retryWrites=true&w=majority")
 
 def make_db():
-    db =  client.strain
+    db =  MongoClient(
+        f"mongodb+srv://{os.getenv('MONGO_USER')}:{os.getenv('MONGO_PASSWORD')}"
+        f"@{os.getenv('MONGO_URI')}/test?retryWrites=true&w=majority"
+    ).strain_table.strain
+
     df = pd.read_csv('cannabis.csv')
     data = df.to_dict(orient='records')
 
@@ -30,4 +28,3 @@ def make_db():
 
 if __name__ == "__main__":
     make_db()
-    
