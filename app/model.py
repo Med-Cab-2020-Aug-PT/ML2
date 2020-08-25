@@ -19,15 +19,19 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+DB_USER = os.getenv("MONGO_USER", default="OOPS")
+DB_PASSWORD = os.getenv("MONGO_PASSWORD", default="OOPS")
+CLUSTER_NAME = os.getenv("MONGO_URI", default="OOPS")
+
+client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{CLUSTER_NAME}/test?retryWrites=true&w=majority")
+
+
 FILEPATH =  os.path.join(os.path.dirname(__file__),'stats_model', 'cannabis.csv')
 
 class PredictionBot:
     """NLP Bot for Cannabis Suggestion App"""
 
-    db =  MongoClient(
-        f"mongodb+srv://{os.getenv('MONGO_USER')}:{os.getenv('MONGO_PASSWORD')}"
-        f"@{os.getenv('MONGO_URI')}/test?retryWrites=true&w=majority"
-    ).strain_table.strain
+    db =  client.strain_table.strain
 
     df = pd.read_csv(FILEPATH)
 
