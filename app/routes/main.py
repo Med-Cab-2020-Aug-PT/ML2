@@ -13,5 +13,5 @@ def search(user_input):
     return jsonify(bot.predict(user_input))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     API.run(debug = True)
