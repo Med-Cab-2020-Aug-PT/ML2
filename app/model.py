@@ -48,7 +48,7 @@ class PredictionBot:
         return next(self.db.find({'_id': int(self.nearest.kneighbors(
             self.tfidf.transform([user_input]).todense()
             )[1][0][0])}))
-        # code that works
+        # code that works     
         # int(self.nearest.kneighbors(self.tfidf.transform([user_input]).todense())[1][0][0])
 
 
