@@ -16,8 +16,7 @@ client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{CLUSTER_NAME}/test
 
 def make_db():
     db =  client.medcabinet.strain
-
-    df = pd.read_csv('cannabis.csv')
+    df = pd.read_csv('../data/csv/cannabis.csv')
     data = df.to_dict(orient='records')
 
     for strain in data:
