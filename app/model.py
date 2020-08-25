@@ -26,7 +26,7 @@ CLUSTER_NAME = os.getenv("MONGO_URI", default="OOPS")
 client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{CLUSTER_NAME}/test?retryWrites=true&w=majority")
 
 
-FILEPATH =  os.path.join(os.path.dirname(__file__),'stats_model', 'cannabis.csv')
+FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'csv', 'cannabis.csv')
 
 class PredictionBot:
     """NLP Bot for Cannabis Suggestion App"""
