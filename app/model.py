@@ -33,6 +33,10 @@ class PredictionBot:
 
     db =  client.strain_table.strain
 
+    # print(db.find_one())
+
+    # breakpoint()
+
     df = pd.read_csv(FILEPATH)
 
     tfidf = TfidfVectorizer()
