@@ -25,7 +25,7 @@ DB_URI = getenv("MONGO_URI", default="OOPS")
 DB_URL = getenv("MONGO_URL", default="OOPS")
 
 # client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{DB_URI}/test?retryWrites=true&w=majority")
-client = MongoClient(f"{getenv(MONGO_URL)}")
+client = MongoClient(f"{getenv('MONGO_URL')}")
 
 FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'csv', 'cannabis.csv')
 
