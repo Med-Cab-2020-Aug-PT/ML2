@@ -1,6 +1,6 @@
 #  data/stats_model/mongo.py
 
-import os
+from os import getenv
 import pandas as pd
 
 from  pymongo import MongoClient
@@ -8,14 +8,22 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DB_USER = os.getenv("MONGO_USER", default="OOPS")
-DB_PASSWORD = os.getenv("MONGO_PASSWORD", default="OOPS")
-DB_URI = os.getenv("MONGO_URI", default="OOPS")
+DB_USER = getenv("MONGO_USER", default="OOPS")
+DB_PASSWORD = getenv("MONGO_PASSWORD", default="OOPS")
+DB_URI = getenv("MONGO_URI", default="OOPS")
+DB_NAME = getenv("MONGO_DB", default ="OOPS")
 
-client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{DB_URI}/test?retryWrites=true&w=majority")
+print('Made it this far')
+
+client = MongoClient("mongodb+srv://{DB_USER}:{DB_PASSWORD}@{DB_URI}/medcabinet?retryWrites=true&w=majority")
+#I changed the dbname from test to medcabinet because I got an bad db error and now I get a invalid uri host error
+print(client)
 
 def make_db():
-    db =  client.medcabinet.strain
+
+    db = client.strains
+
+    print(db)
     df = pd.read_csv('../data/csv/cannabis.csv')
     data = df.to_dict(orient='records')
 

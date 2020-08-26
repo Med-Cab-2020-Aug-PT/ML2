@@ -22,16 +22,16 @@ load_dotenv()
 DB_USER = os.getenv("MONGO_USER", default="OOPS")
 DB_PASSWORD = os.getenv("MONGO_PASSWORD", default="OOPS")
 DB_URI = os.getenv("MONGO_URI", default="OOPS")
+DB_NAME = os.getenv("MONGO_DB", default="OOPS")
 
-client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{DB_URI}/test?retryWrites=true&w=majority")
-
+client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{DB_URI}/{DB_NAME}?retryWrites=true&w=majority")
 
 FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'csv', 'cannabis.csv')
 
 class PredictionBot:
     """NLP Bot for Cannabis Suggestion App"""
 
-    db =  client.strain
+    db =  client.strains
     df = pd.read_csv(FILEPATH)
 
     tfidf = TfidfVectorizer()
