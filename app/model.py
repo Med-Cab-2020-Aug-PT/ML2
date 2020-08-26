@@ -7,7 +7,7 @@ Input  --> TF-IDF -->  Nearest Neighbor --> Output
 """
 
 import pandas as pd
-import os
+from os import getenv
 
 from pymongo import MongoClient
 
