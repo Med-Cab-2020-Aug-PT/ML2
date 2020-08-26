@@ -16,7 +16,7 @@ def create_app():
     APP = Flask(__name__)
     APP.config["MONGO_URI"] = MONGO_URL
 
-    APP.register_bluerpint(API)
+    APP.register_blueprint(API)
 
     return APP
 

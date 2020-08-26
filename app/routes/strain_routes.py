@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, request, render_template, flash, redirect, jsonify
 from  app.model import PredictionBot
 
 API = Blueprint("API", __name__)
@@ -11,7 +11,3 @@ def index():
 def search(user_input):
     bot = PredictionBot()
     return jsonify(bot.predict(user_input))
-
-
-if __name__ == "__main__":
-    API.run(debug = True)
