@@ -16,10 +16,10 @@ DB_NAME = getenv("MONGO_DB", default ="OOPS")
 print('Made it this far')
 
 # client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{DB_URI}/{DB_NAME}?retryWrites=true&w=majority")
-client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{DB_URI}/medcabinet?retryWrites=true&w=majority")
+client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{DB_URI}/test?retryWrites=true&w=majority")
 # client = MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{DB_URI}/medcabinet?retryWrites=true&w=majority")
 #I changed the dbname from test to medcabinet because I got an bad db error and now I get a invalid uri host error
-print(client)
+print("CLIENT:", client)
 
 def make_db():
 
