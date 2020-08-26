@@ -1,7 +1,7 @@
-from flask import Flask, jsonify
+from flask import Blueprint, jsonify
 from  app.model import PredictionBot
 
-API = Flask(__name__)
+API = Blueprint("API", __name__)
 
 @API.route('/')
 def index():
