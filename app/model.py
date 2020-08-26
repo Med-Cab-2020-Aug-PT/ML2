@@ -31,7 +31,7 @@ FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'csv', 'cannabis.csv'
 class PredictionBot:
     """NLP Bot for Cannabis Suggestion App"""
 
-    db =  client.strains
+    db =  client.medcabinet.strains
     df = pd.read_csv(FILEPATH)
 
     tfidf = TfidfVectorizer()
@@ -47,9 +47,6 @@ class PredictionBot:
         return next(self.db.find({'_id': int(self.nearest.kneighbors(
             self.tfidf.transform([user_input]).todense()
             )[1][0][0])}))
-        # code that works     
-        # int(self.nearest.kneighbors(self.tfidf.transform([user_input]).todense())[1][0][0])
-
 
 if __name__ == "__main__":
     bot = PredictionBot()
