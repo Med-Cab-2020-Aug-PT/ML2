@@ -106,10 +106,10 @@ def cosine_recs(user_input):
     recommendations5 = cosine_df1[cosine_df1[0] < 1][0].sort_values(ascending=False)[:5]
 
     #Just grab index numbers
-    rec_result = recommendations5.index.tolist()
+    rec_result = recommendations5.index.list()
 
     return rec_result
 
 print(cosine_recs(user_input))
 
-#have to create separate 
+#Results of user input: [992, 439, 184, 1117, 45]

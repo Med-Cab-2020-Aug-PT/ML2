@@ -51,21 +51,11 @@ class PredictionBot:
         rec_dtm = self.dtm_model.append(user_dtm).reset_index(drop=True)
         cosine_df = pd.DataFrame(cosine_similarity(rec_dtm))
 
-        recommendations5 = cosine_df[cosine_df[0] < 1][0].sort_values(ascending=False)[:5]
+        recommendations = cosine_df[cosine_df[0] < 1][0].sort_values(ascending=False)[:1]
 
-        rec_result = recommendations5['_id'].to_list
+        rec_result = recommendations.index.tolist()
 
-        #TRIED
-        '''
-        Trying to get just the ids from the recommendations 
-        Tried
-        - just trying to return recommendation5
-        - recommendations5['_id'].tolist()
-        - list(recommendations5.index)
-        - recommendation5.index
-        '''
-
-        mongo_recs = next(self.db.find(rec_result))
+        mongo_recs = next(self.db.find({'_id':(rec_result)[0]}))
         return mongo_recs
 
 if __name__ == "__main__":
