@@ -4,7 +4,7 @@ import pickle
 import re
 from spacy
 
-nlp = English()
+nlp = spacy.load("en_core_web_lg")
 
 STOP_WORDS = nlp.Defaults.stop_words.union({"$", '-', '', ' ',
                                             'bred','breed', 'breeds','call', 'calls',
