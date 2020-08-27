@@ -24,7 +24,7 @@ print(df.head())
 
 ## spaCy
 # TOKENIZE_FILEPATH =  '../app/data/pickled_models/tokenize.pkl'
-TOKENIZE_FILEPATH =  'notebook/tokenize.pkl'
+TOKENIZE_FILEPATH =  'app/data/pickled_models/tokenize.pkl'
 
 #Loading the pickled models
 tokenize = pickle.load(open(TOKENIZE_FILEPATH, 'rb'))
@@ -40,8 +40,6 @@ tfidf = TfidfVectorizer(stop_words='english',
 # Create a vocabulary and get word counts per document
 dtm = tfidf.fit_transform(df['Type'] + df['Description'] + df['Effects'] + df['Flavors']) # Similiar to fit_predict
 
-# Print word counts
-
 # Get feature names to use as dataframe column headers
 dtm = pd.DataFrame(dtm.todense(), columns=tfidf.get_feature_names())
 
@@ -49,7 +47,6 @@ dtm = pd.DataFrame(dtm.todense(), columns=tfidf.get_feature_names())
 print(dtm.head())
 
 # Create cosine_similarity function
-
 import json
 
 def cosine_recommender(user_input):
@@ -63,3 +60,41 @@ def cosine_recommender(user_input):
 
 user_input1 =["I am feeling sluggish. I am looking for an ammonia flavored strain that will have me feeling happy and energetic"]
 print(cosine_recommender(user_input1))
+
+# pickle new model
+# TFIDF_FILEPATH = os.path.join(os.path.dirname(__file__), "..","app", "data", "pickled_models", "tfidf.pkl")
+
+# with open(TFIDF_FILEPATH, "wb") as model_file:
+#   print("SAVE PICKLE 2")
+#   pickle.dump(tfidf, model_file, protocol=pickle.HIGHEST_PROTOCOL)
+
+# DTM_FILEPATH = os.path.join(os.path.dirname(__file__), "..","app", "data", "pickled_models", "dtm.pkl")
+
+# with open(DTM_FILEPATH, "wb") as model_file:
+#   print("SAVE PICKLE 3")
+#   pickle.dump(dtm, model_file, protocol=pickle.HIGHEST_PROTOCOL)
+
+
+#Testing model
+
+DTM_FILEPATH =  'app/data/pickled_models/dtm.pkl'
+TFIDF_FILEPATH = 'app/data/pickled_models/tfidf.pkl'
+
+#Loading the pickled models
+tfidf_model = pickle.load(open(TFIDF_FILEPATH, 'rb'))
+dtm_model = pickle.load(open(DTM_FILEPATH, 'rb'))
+
+print(tfidf_model)
+print(dtm_model)
+
+def cosine_recs(user_input):
+    user_dtm1 = pd.DataFrame(tfidf_model.transform(user_input).todense(), columns=tfidf_model.get_feature_names())
+    rec_dtm1 = dtm_model.append(user_dtm1).reset_index(drop=True)
+
+    cosine_df1 = pd.DataFrame(cosine_similarity(rec_dtm1))
+
+    recommendations5 = cosine_df1[cosine_df1[0] < 1][0].sort_values(ascending=False)[:5]
+
+    return recommendations5
+
+print(cosine_recs(user_input1))

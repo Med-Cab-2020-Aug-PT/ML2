@@ -1,3 +1,4 @@
+# tokenize with en_core_web_lg
 """Import Statements"""
 import os
 import pickle
