@@ -10,4 +10,4 @@ def index():
 @API.route('/search/<user_input>')
 def search(user_input):
     bot = PredictionBot()
-    return jsonify(bot.predict(user_input))
+    return jsonify(bot.cosine_recommender(user_input))

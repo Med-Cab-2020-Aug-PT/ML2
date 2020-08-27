@@ -13,6 +13,9 @@ import pickle
 
 from pymongo import MongoClient
 
+import spacy
+from spacy.tokenizer import Tokenizer
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import NearestNeighbors
 from sklearn.metrics.pairwise import cosine_similarity
@@ -42,11 +45,12 @@ class PredictionBot:
     #         )[1][0][0])}))
 
     def cosine_recommender(self, user_input):
-        user_dtm = pd.DataFrame(self.tfidf_model.transform(user_input).todense(), columns=tfidf_model.get_feature_names())
-        rec_dtm = self.dtm_model.append(user_dtm1).reset_index(drop=True)
-        cosine_df = pd.DataFrame(cosine_similarity(rec_dtm1))
+        user_dtm = pd.DataFrame(self.tfidf_model.transform(user_input).todense(), columns=self.tfidf_model.get_feature_names())
+        rec_dtm = self.dtm_model.append(user_dtm).reset_index(drop=True)
+        cosine_df = pd.DataFrame(cosine_similarity(rec_dtm))
 
-        recommendations5 = next(self.db.find({'_id': int(cosine_df1[cosine_df1[0] < 1][0].sort_values(ascending=False)[:5])}))
+        recommendations5 = cosine_df[cosine_df[0] < 1][0].sort_values(ascending=False)[:5]
+
         return recommendations5
 
 if __name__ == "__main__":

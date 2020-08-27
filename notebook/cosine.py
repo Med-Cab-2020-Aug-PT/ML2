@@ -12,7 +12,6 @@ import squarify
 import re
 import spacy
 from spacy.tokenizer import Tokenizer
-from collections import Counter
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -98,3 +97,5 @@ def cosine_recs(user_input):
     return recommendations5
 
 print(cosine_recs(user_input1))
+
+#have to create separate 
