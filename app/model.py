@@ -24,6 +24,7 @@ load_dotenv()
 FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'csv', 'cannabis.csv')
 DTM_FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'pickled_models', 'dtm.pkl')
 TFIDF_FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'pickled_models', 'tfidf.pkl')
+TOKENIZE_FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'pickled_models', 'tokens.pkl')
 
 class PredictionBot:
     """NLP Bot for Cannabis Suggestion App"""
@@ -35,6 +36,7 @@ class PredictionBot:
     #Pickled models
     tfidf_model = pickle.load(open(DTM_FILEPATH, 'rb'))
     dtm_model = pickle.load(open(TFIDF_FILEPATH, 'rb'))
+    tokenize = pickle.load(open(TOKENIZE_FILEPATH, 'rb'))
 
     # def predict(self, user_input):
     #     return next(self.db.find({'_id': int(self.nearest.kneighbors(

@@ -2,7 +2,7 @@
 import os
 import pickle
 import re
-from spacy
+import spacy
 
 nlp = spacy.load("en_core_web_lg")
 
