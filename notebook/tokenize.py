@@ -2,8 +2,7 @@
 import os
 import pickle
 import re
-from spacy.lang.en import English
-from spacy.lang.en.stop_words import STOP_WORDS
+from spacy
 
 nlp = English()
 
