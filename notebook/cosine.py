@@ -22,11 +22,11 @@ print('Shape:', df.shape)
 print(df.head())
 
 ## spaCy
-# TOKENIZE_FILEPATH =  '../app/data/pickled_models/tokenize.pkl'
 TOKENIZE_FILEPATH =  'app/data/pickled_models/tokenize.pkl'
 
 #Loading the pickled models
 tokenize = pickle.load(open(TOKENIZE_FILEPATH, 'rb'))
+print(tokenize)
 
 # Instantiate vectorizer object
 tfidf = TfidfVectorizer(stop_words='english', 
@@ -87,14 +87,28 @@ print(tfidf_model)
 print(dtm_model)
 
 def cosine_recs(user_input):
+    '''
+    Function takes user input and transforms into vectorized dataframe
+    This is then added to the dtm 
+    Then it  calculates the similarity between input and strain 
+    and returns the top 5 closest matches. 
+
+    '''
+    #Vectorizes user input
     user_dtm1 = pd.DataFrame(tfidf_model.transform(user_input).todense(), columns=tfidf_model.get_feature_names())
+
+    #Adds  transformed input to dtm
     rec_dtm1 = dtm_model.append(user_dtm1).reset_index(drop=True)
 
+    #Calculates similarity and input
     cosine_df1 = pd.DataFrame(cosine_similarity(rec_dtm1))
 
+    #Finds 5 closet strains.
     recommendations5 = cosine_df1[cosine_df1[0] < 1][0].sort_values(ascending=False)[:5]
 
-    return recommendations5
+    rec_result = recommendations5.index
+
+    return rec_result
 
 print(cosine_recs(user_input1))
 

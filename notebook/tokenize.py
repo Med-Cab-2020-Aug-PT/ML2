@@ -28,7 +28,7 @@ def tokenize(text):
   doc = nlp(text) #casting as text
   return [token.lemma_.strip() for token in doc if not token.is_stop and not token.is_punct]
 
-MODEL_FILEPATH = os.path.join(os.path.dirname(__file__), "tokenize.pkl")
+MODEL_FILEPATH = os.path.join(os.path.dirname(__file__),"..", "app", "data", "pickled_models", "tokenize.pkl")
 
 with open(MODEL_FILEPATH, "wb") as model_file:
   print("SAVE PICKLE 1")
