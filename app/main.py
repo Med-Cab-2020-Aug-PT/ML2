@@ -1,4 +1,5 @@
-from flask import request, render_template, flash, redirect, jsonify
+from flask import Flask, request, render_template, flash, redirect, jsonify
+import os
 from  app.model import PredictionBot
 
 API = Flask(__name__)
