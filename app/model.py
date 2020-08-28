@@ -38,18 +38,17 @@ class PredictionBot:
         self.dtm_model = pickle.load(open(DTM_FILEPATH, 'rb'))
 
     def cosine_recommender(self, user_input):
-        user_dtm = pd.DataFrame(self.tfidf_model.transform([user_input]).todense(), columns=self.tfidf_model.get_feature_names())
-        rec_dtm = self.dtm_model.append(user_dtm).reset_index(drop=True)
-        cosine_df = pd.DataFrame(cosine_similarity(rec_dtm))
+        user_dtm1 = pd.DataFrame(tfidf_model.transform([user_input]).todense(), columns=tfidf_model.get_feature_names())
+        rec_dtm1 = dtm_model.append(user_dtm1).reset_index(drop=True)
+        cosine_df1 = pd.DataFrame(cosine_similarity(rec_dtm1))
 
-        recommendations = cosine_df[cosine_df[0] < 1][0].sort_values(ascending=False)[:1]
-
+        recommendations5 = cosine_df1[cosine_df1[0] < 1][0].sort_values(ascending=False)[:5]
         rec_result = recommendations.index.tolist()
 
-        mongo_recs = next(self.db.find({'_id':(rec_result)[0]}))
+        mongo_recs = next(self.db.find({'_id':(rec_result)[1]}))
         return mongo_recs
 
 if __name__ == "__main__":
     bot = PredictionBot()
-    print(bot.cosine_recommender(["Some text in here.. "]))
+    print(bot.cosine_recommender("Some text in here.. "))
 
