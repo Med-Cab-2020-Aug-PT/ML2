@@ -26,7 +26,6 @@ load_dotenv()
 FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'csv', 'cannabis.csv')
 DTM_FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'pickled_models', 'dtm.pkl')
 TFIDF_FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'pickled_models', 'tfidf.pkl')
-TOKENIZE_FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'pickled_models', 'tokenize.pkl')
 
 class PredictionBot:
     """NLP Bot for Cannabis Suggestion App"""
@@ -37,7 +36,6 @@ class PredictionBot:
         #Pickled models
         self.tfidf_model = pickle.load(open(TFIDF_FILEPATH, 'rb'))
         self.dtm_model = pickle.load(open(DTM_FILEPATH, 'rb'))
-        self.tokenize = pickle.load(open(TOKENIZE_FILEPATH, 'rb'))
 
     def cosine_recommender(self, user_input):
         user_dtm = pd.DataFrame(self.tfidf_model.transform([user_input]).todense(), columns=self.tfidf_model.get_feature_names())
