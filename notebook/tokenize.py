@@ -29,9 +29,9 @@ def tokenize(text):
   return [token.lemma_.strip() for token in doc if not token.is_stop and not token.is_punct]
 
 
-MODEL_FILEPATH = os.path.join(os.path.dirname(__file__), "tokenize.pkl")
+MODEL_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "app", "data", "pickled_models", "tokenize.pkl")
 
-with open(MODEL_FILEPATH, "wb") as model_file:
-  print("SAVE PICKLE 1")
-  pickle.dump(tokenize, model_file, protocol=pickle.HIGHEST_PROTOCOL)
+def pickleStore():
+    pickle.dump(tokenize, open(MODEL_FILEPATH, "wb"), protocol=pickle.HIGHEST_PROTOCOL)
 
+tokenize = pickleStore()
