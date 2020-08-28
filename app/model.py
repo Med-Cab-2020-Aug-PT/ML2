@@ -38,14 +38,14 @@ class PredictionBot:
         self.dtm_model = pickle.load(open(DTM_FILEPATH, 'rb'))
 
     def cosine_recommender(self, user_input):
-        user_dtm1 = pd.DataFrame(tfidf_model.transform([user_input]).todense(), columns=tfidf_model.get_feature_names())
-        rec_dtm1 = dtm_model.append(user_dtm1).reset_index(drop=True)
+        user_dtm1 = pd.DataFrame(self.tfidf_model.transform([user_input]).todense(), columns=self.tfidf_model.get_feature_names())
+        rec_dtm1 = self.dtm_model.append(user_dtm1).reset_index(drop=True)
         cosine_df1 = pd.DataFrame(cosine_similarity(rec_dtm1))
 
-        recommendations5 = cosine_df1[cosine_df1[0] < 1][0].sort_values(ascending=False)[:5]
-        rec_result = recommendations.index.tolist()
+        recommendations5 = cosine_df1[cosine_df1[0] < 1][len(cosine_df1)-1].sort_values(ascending=False)[1:6]
+        rec_result = recommendations5.index.tolist()
 
-        mongo_recs = next(self.db.find({'_id':(rec_result)[1]}))
+        mongo_recs = next(self.db.find({'_id':(rec_result)[0]}))
         return mongo_recs
 
 if __name__ == "__main__":
