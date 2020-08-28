@@ -29,5 +29,9 @@ def tokenize(text):
   return [token.lemma_.strip() for token in doc if not token.is_stop and not token.is_punct]
 
 
-# Pickle tokenizer model
-pickle.dump(tokenize, open('tokenize.pkl', 'wb'), protocol=pickle.HIGHEST_PROTOCOL)
+MODEL_FILEPATH = os.path.join(os.path.dirname(__file__), "tokenize.pkl")
+
+with open(MODEL_FILEPATH, "wb") as model_file:
+  print("SAVE PICKLE 1")
+  pickle.dump(tokenize, model_file, protocol=pickle.HIGHEST_PROTOCOL)
+
