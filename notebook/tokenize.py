@@ -5,7 +5,7 @@ import pickle
 import re
 import spacy
 
-nlp = spacy.load("en_core_web_lg")
+nlp = spacy.load("en_core_web_md")
 
 STOP_WORDS = nlp.Defaults.stop_words.union({"$", '-', '', ' ',
                                             'bred','breed', 'breeds','call', 'calls',
@@ -28,9 +28,8 @@ def tokenize(text):
   doc = nlp(text) #casting as text
   return [token.lemma_.strip() for token in doc if not token.is_stop and not token.is_punct]
 
-MODEL_FILEPATH = os.path.join(os.path.dirname(__file__),"..", "app", "data", "pickled_models", "tokenize.pkl")
+# MODEL_FILEPATH = os.path.join(os.path.dirname(__file__),"..", "app", "data", "pickled_models", "tokenize.pkl")
 
-with open(MODEL_FILEPATH, "wb") as model_file:
-  print("SAVE PICKLE 1")
-  pickle.dump(tokenize, model_file, protocol=pickle.HIGHEST_PROTOCOL)
-
+# with open(MODEL_FILEPATH, "wb") as model_file:
+#   print("SAVE PICKLE 1")
+#   pickle.dump(tokenize, model_file, protocol=pickle.HIGHEST_PROTOCOL)
