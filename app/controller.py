@@ -33,7 +33,7 @@ class PredictionBot:
         self.dtm_model = pickle.load(open(DTM_FILEPATH, 'rb'))
 
     def name_lookup(self, name: str) -> dict:
-        return next(self.db.find({'Name': name}))
+        return next(self.db.find({'Name': name.title()}))
 
     def recommender(self, user_input):
         user_dtm1 = pd.DataFrame(self.tfidf_model.transform([user_input]).todense(), columns=self.tfidf_model.get_feature_names())
