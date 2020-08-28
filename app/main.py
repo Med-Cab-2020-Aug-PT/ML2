@@ -22,6 +22,7 @@ def search(user_input):
 def name_lookup(user_input: str):
     """ Arbitrary Search Route """
     bot = PredictionBot()
+    print(user_input)
     return jsonify(bot.name_lookup(user_input))
 
 if __name__ == "__main__":

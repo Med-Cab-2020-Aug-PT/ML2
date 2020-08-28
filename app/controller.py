@@ -49,5 +49,5 @@ class PredictionBot:
 if __name__ == "__main__":
     bot = PredictionBot()
     print(bot.recommender("big buds"))
-    print(bot.name_lookup('Wedding Cake'))
+    print(bot.name_lookup('Ocd'))
 
