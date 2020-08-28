@@ -3,7 +3,6 @@
 """
 NLP Model for DS Build Week
 Input  --> TF-IDF -->  Cosine_Similarity --> Output
-Input  --> TF-IDF -->  Nearest Neighbor --> Output
 """
 
 import os
