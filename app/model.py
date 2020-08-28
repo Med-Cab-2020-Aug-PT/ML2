@@ -40,12 +40,6 @@ class PredictionBot:
         self.dtm_model = pickle.load(open(DTM_FILEPATH, 'rb'))
         self.tokenize = pickle.load(open(TOKENIZE_FILEPATH, 'rb'))
 
-
-    # def predict(self, user_input):
-    #     return next(self.db.find({'_id': int(self.nearest.kneighbors(
-    #         self.tfidf.transform([user_input]).todense()
-    #         )[1][0][0])}))
-
     def cosine_recommender(self, user_input):
         user_dtm = pd.DataFrame(self.tfidf_model.transform([user_input]).todense(), columns=self.tfidf_model.get_feature_names())
         rec_dtm = self.dtm_model.append(user_dtm).reset_index(drop=True)
