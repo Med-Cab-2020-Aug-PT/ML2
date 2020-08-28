@@ -1,54 +1,40 @@
 #app/model.py
 
-"""
-NLP Model for DS Build Week
-Input  --> TF-IDF -->  Cosine_Similarity --> Output
-"""
-
-import os
-from os import getenv
 import pandas as pd
-import pickle
-
-from pymongo import MongoClient
-
-import spacy
-from spacy.tokenizer import Tokenizer
-
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.neighbors import NearestNeighbors
-from sklearn.metrics.pairwise import cosine_similarity
-
+from  pymongo import MongoClient
+from os import getenv
 from dotenv import load_dotenv
 
+__all__ = ('StrainData',)
+
 load_dotenv()
+DB_USER = getenv("MONGO_USER", default="OOPS")
+DB_PASSWORD = getenv("MONGO_PASSWORD", default="OOPS")
+DB_URI = getenv("MONGO_URI", default="OOPS")
 
-FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'csv', 'cannabis.csv')
-DTM_FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'pickled_models', 'dtm.pkl')
-TFIDF_FILEPATH =  os.path.join(os.path.dirname(__file__),'data', 'pickled_models', 'tfidf.pkl')
+class StrainData():
 
-class PredictionBot:
-    """NLP Bot for Cannabis Suggestion App"""
+    def connect_db(self):
+        """MongoDB Table Connection"""
+        return MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{DB_URI}/test?retryWrites=true&w=majority").medcabinet.strains
 
-    def __init__(self):
-        self.db =  MongoClient(f"{getenv('MONGO_URL')}").medcabinet.strains
+    def read_csv(self):
+        pd.read_csv('../data/csv/cannabis.csv')
 
-        #Pickled models
-        self.tfidf_model = pickle.load(open(TFIDF_FILEPATH, 'rb'))
-        self.dtm_model = pickle.load(open(DTM_FILEPATH, 'rb'))
+    def make_db(self):
+        """Creates and Populates the Database"""
+        db = self.connect_db()
+        data = self.read_csv().to_dict(orient='records')
 
-    def cosine_recommender(self, user_input):
-        user_dtm1 = pd.DataFrame(self.tfidf_model.transform([user_input]).todense(), columns=self.tfidf_model.get_feature_names())
-        rec_dtm1 = self.dtm_model.append(user_dtm1).reset_index(drop=True)
-        cosine_df1 = pd.DataFrame(cosine_similarity(rec_dtm1))
+        for strain in data:
+            strain['Effects'] = strain['Effects'].split(',')
+            strain['Flavors'] = strain['Flavors'].split(',')
+            strain['Nearest'] = [data[int(idx)]['Name'] for idx in strain['Nearest'].split(',')]
 
-        recommendations5 = cosine_df1[cosine_df1[0] < 1][len(cosine_df1)-1].sort_values(ascending=False)[1:6]
-        rec_result = recommendations5.index.tolist()
+        db.insert_many(data)
 
-        mongo_recs = next(self.db.find({'_id':(rec_result)[0]}))
-        return mongo_recs
 
 if __name__ == "__main__":
-    bot = PredictionBot()
-    print(bot.cosine_recommender("Some text in here.. "))
-
+    data_model = DataModel()
+    # data_model._make_db()  # DO ONLY ONCE!
+    print(next(data_model.connect_db().find({'Name': 'Caramelicious'})))
