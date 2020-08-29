@@ -30,12 +30,12 @@ def name_lookup(user_input: str):
 def hello(name=None):
     return render_template('hello.html', name=name)
 
-@API.route('/search/<user_input>')
-def search(user_input):
-    """Utilizing NLP, users can type what they are looking for and the
-    Predictionbot will find the closest match to their input"""
-    bot = PredictionBot()
-    return jsonify(bot.recommender(user_input))
+# @API.route('/search/<user_input>')
+# def search(user_input):
+#     """Utilizing NLP, users can type what they are looking for and the
+#     Predictionbot will find the closest match to their input"""
+#     bot = PredictionBot()
+#     return jsonify(bot.recommender(user_input))
 
 if __name__ == "__main__":
     API.run(debug=True)
