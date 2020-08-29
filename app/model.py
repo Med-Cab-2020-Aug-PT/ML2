@@ -8,10 +8,6 @@ from dotenv import load_dotenv
 __all__ = ('StrainData',)
 
 load_dotenv()
-DB_USER = getenv("MONGO_USER", default="OOPS")
-DB_PASSWORD = getenv("MONGO_PASSWORD", default="OOPS")
-DB_URI = getenv("MONGO_URI", default="OOPS")
-
 
 class StrainData():
 
