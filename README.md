@@ -18,7 +18,7 @@ https://med-cabinet-project.herokuapp.com/Afpak
 ```
 Description: "Spawn from Afghani and Big Bud, Afghan Big Bud (or Big Bud Afghani) is characterized as a large plant with broad leaves and thick stems. It has a dense appearance, similar to Big Bud,
               and maintains the taste of Afghani, resulting in the best of both worlds. The effects come relatively quick but usually dissipate under two hours."
-flavor: 	 "Pungent","Lemon","Peach"
+Flavor: 	 "Pungent","Lemon","Peach"
 Effects: 	 "Depression,Insomnia,Pain,Stress,Lack of Appetite"
 Name:        "Afghan Big Bud"
 Nearest":    "Mangolicious","Bc Big Bud","Big Bud","Big Mac","Big Kush"

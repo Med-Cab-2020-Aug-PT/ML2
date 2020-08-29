@@ -1,0 +1,23 @@
+<html>
+    <header>
+        <title>MARIJUANA RECOMMENDATIONS</title> 
+    </header>
+    <body>
+        <h2>STRAIN RECOMMENDATIONS</h2>
+
+    <p>{{ message }}</p>
+
+    {% if rec_result %}
+        <ul>
+        {% for recs in rec_result %}
+            <li>{{ mon }}</li>
+        {% endfor %}
+        </ul>
+
+    {% else %}
+        <p>Strain not found.</p>
+    {% endif %}
+
+{% endblock %}
+    </body>
+</html>
