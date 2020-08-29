@@ -12,11 +12,12 @@ DB_USER = getenv("MONGO_USER", default="OOPS")
 DB_PASSWORD = getenv("MONGO_PASSWORD", default="OOPS")
 DB_URI = getenv("MONGO_URI", default="OOPS")
 
+
 class StrainData():
 
     def connect_db(self):
         """MongoDB Table Connection"""
-        return MongoClient(f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{DB_URI}/test?retryWrites=true&w=majority").medcabinet.strains
+        return MongoClient(f"{getenv('MONGO_URL')}").medcabinet.strains
 
     def read_csv(self):
         pd.read_csv('../data/csv/cannabis.csv')
