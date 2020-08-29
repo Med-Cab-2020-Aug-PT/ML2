@@ -1,6 +1,6 @@
 #app/main.py
 
-from flask import Flask, request, render_template, flash, redirect, jsonify
+from flask import Flask, request, render_template, redirect, jsonify
 import os
 from  app.controller import PredictionBot
 
@@ -9,21 +9,23 @@ API = Flask(__name__)
 
 @API.route('/')
 def index():
-    return jsonify("App Online")
+    return render_template('home.html')
 
-@API.route('/search/<user_input>')
-def search(user_input):
+@API.route('/search', methods=['POST'])
+def search():
     """Utilizing NLP, users can type what they are looking for and the
     Predictionbot will find the closest match to their input"""
+    query = request.form['query']
     bot = PredictionBot()
-    return jsonify(bot.recommender(user_input))
+    return jsonify(bot.recommender(query))
 
-@API.route('/name/<user_input>', methods=["POST"])
-def name_lookup(user_input: str):
+@API.route('/name', methods=["POST"])
+def name_lookup():
     """ Arbitrary Search Route """
+    query = request.form['query']
     bot = PredictionBot()
-    print(user_input)
-    return jsonify(bot.name_lookup(user_input))
+    print(query)
+    return jsonify(bot.name_lookup(query))
 
 @API.route('/hello/')
 @API.route('/hello/<name>')
