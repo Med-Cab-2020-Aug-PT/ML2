@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-<body>
+    <body>
 
-<h3>Effect 1</h3>
+        <div style = "float:left">
+        <h2>Looking for Recommendations?</h2>
 
-            <form action="/search" method="POST" >
+        <form action="/search" method="POST" >
+            <h3>Effect 1</h3>
             <label for="effects1">Choose an effect:</label>
-            <select id="Effect" name="item1">
+            <select id="Effect" name="item1"/>
                 <option value="Happy">Happy</option>
                 <option value="Uplifted">Uplifted</option>
                 <option value="Sleepy">Sleepy</option>
@@ -23,9 +25,8 @@
             </select>
 
             <h3>Effect 2</h3>
-
             <label for="effects2">Choose an effect:</label>
-            <select id="Effect" name="item2">
+            <select id="Effect" name="item2"/ >
                 <option value="Happy">Happy</option>
                 <option value="Uplifted">Uplifted</option>
                 <option value="Sleepy">Sleepy</option>
@@ -42,9 +43,8 @@
             </select>
 
             <h3>Flavor 1</h3>
-
             <label for="flavor">Choose a flavor:</label>
-            <select id="Flavors" name="item3">
+            <select id="Flavors" name="item3"/ >
                 <option value="Ammonia">Ammonia</option>
                 <option value="Apple">Apple</option>
                 <option value="Apricot">Apricot</option>
@@ -98,24 +98,19 @@
             <br>
             <br>
 
-            <p>Anything Else?
-            <input type="text" name="item4" />
-            </p>
-
+            <p>Anything Else? <input type="text" name="item4" /> </p>
             <br>
-
-	        <input type="submit">
-
+	        <input type="submit"/>
         </form>
+        </div>
 
-        <form action="/name" method="POST">
-            <p>
-                Are you looking for a specific strain?
-                <input type="text" name="query2" />
-            </p>
-
-                <input type="submit" />
-            </p>
-        </form>
+        <div style = "float:right">
+        <h2>Want to Know More About a Particular Strain?</h2>
+            <form action="/name" method="POST">
+            <p>Strain <input type="text" name="query2" /></p>
+            <br>
+            <input type="submit"/>
+            </form>
+        </div>
     </body>
 </html>
