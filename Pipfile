@@ -20,6 +20,7 @@ flask-pymongo = "*"
 dnspython = "*"
 pymongo = "*"
 cloudpickle = "*"
+wtforms = "*"
 
 [requires]
 python_version = "3.7"

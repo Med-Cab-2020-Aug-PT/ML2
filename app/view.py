@@ -14,14 +14,18 @@ def index():
     return render_template('home.html')
 
 @API.route('/search', methods=['POST'])
-def search():
+def compute():
     """Utilizing NLP, users can type what they are looking for and the
     Predictionbot will find the closest match to their input"""
-    query = request.form['effect1' + 'effect2' + 'flavors' + 'text input']
+    effect1 = request.form['item1']
+    effect2 = request.form['item2']
+    flavor = request.form['item3']
+    t_input = request.form['item4']
+    query = effect1 + " " + effect2 + " " + flavor + " " + t_input
     print(query)
     bot = PredictionBot()
-    # return jsonify(bot.recommender(query))
     result = bot.recommender(query)
+
     return render_template('result.html', result=result)
 
 
@@ -30,7 +34,7 @@ def name_lookup():
     """ Arbitrary Search Route """
     query2 = request.form['query2']
     bot = PredictionBot()
-    print(query)
+    print(query2)
     # return jsonify(bot.name_lookup(query))
     result = bot.name_lookup(query2)
     return render_template('result.html', result=result)
@@ -39,13 +43,6 @@ def name_lookup():
 @API.route('/hello/<name>')
 def hello(name=None):
     return render_template('hello.html', name=name)
-
-# @API.route('/search/<user_input>')
-# def search(user_input):
-#     """Utilizing NLP, users can type what they are looking for and the
-#     Predictionbot will find the closest match to their input"""
-#     bot = PredictionBot()
-#     return jsonify(bot.recommender(user_input))
 
 if __name__ == "__main__":
     API.run(debug=True)
