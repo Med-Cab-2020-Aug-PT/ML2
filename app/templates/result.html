@@ -2,22 +2,20 @@
     <header>
         <title>MARIJUANA RECOMMENDATIONS</title>
     </header>
-    <body>
+
         <h2>STRAIN RECOMMENDATIONS</h2>
 
-    <p>{{ message }}</p>
+        <div style="margin-bottom: 30px">
 
-    {% if rec_result %}
-        <ul>
-        {% for recs in rec_result %}
-            <li>{{ mon }}</li>
-        {% endfor %}
-        </ul>
+            <p>_id: {{ result._id}}</p>
+            <p>Description: {{ result.Description}}</p>
+            <p>Name: {{ result.Name}}</p>
+            <p>Type: {{ result.Type}}</p>
+            <p>Rating: {{ result.Rating}}</p>
+            <p>Effects: {{ result.Effects}}</p>
+            <p>Flavors: {{ result.Flavors}}</p>
+            <p>Nearest: {{ result.Nearest}}</p>
 
-    {% else %}
-        <p>Strain not found.</p>
-    {% endif %}
+        </div>
 
-{% endblock %}
-    </body>
 </html>

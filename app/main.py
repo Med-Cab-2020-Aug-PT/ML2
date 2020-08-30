@@ -19,7 +19,10 @@ def search():
     Predictionbot will find the closest match to their input"""
     query = request.form['query']
     bot = PredictionBot()
-    return jsonify(bot.recommender(query))
+    # return jsonify(bot.recommender(query))
+    result = bot.recommender(query)
+    return render_template('result.html', result=result)
+
 
 @API.route('/name', methods=["POST"])
 def name_lookup():
@@ -27,7 +30,9 @@ def name_lookup():
     query = request.form['query']
     bot = PredictionBot()
     print(query)
-    return jsonify(bot.name_lookup(query))
+    # return jsonify(bot.name_lookup(query))
+    result = bot.name_lookup(query)
+    return render_template('result.html', result=result)
 
 @API.route('/hello/')
 @API.route('/hello/<name>')
