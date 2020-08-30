@@ -7,6 +7,8 @@ from  app.controller import PredictionBot
 __all__ = ('API',)
 API = Flask(__name__)
 
+#need to make bot a global variable for other routes to use.
+
 @API.route('/')
 def index():
     return render_template('home.html')
