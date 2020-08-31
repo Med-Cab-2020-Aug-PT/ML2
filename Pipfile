@@ -6,21 +6,18 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-requests = "*"
-pandas = "*"
 flask = "*"
-flask-sqlalchemy = "*"
-flask-migrate = "*"
+pandas = "*"
 python-dotenv = "*"
+requests = "*"
 scikit-learn = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
 spacy = "*"
 flask-pymongo = "*"
+pickle = "*"
 dnspython = "*"
 pymongo = "*"
-cloudpickle = "*"
-wtforms = "*"
 
 [requires]
 python_version = "3.7"

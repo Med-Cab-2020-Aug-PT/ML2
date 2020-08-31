@@ -4,7 +4,6 @@ import pandas as pd
 from  pymongo import MongoClient
 from os import getenv
 from dotenv import load_dotenv
-from wtforms import Form, validators
 
 __all__ = ('StrainData',)
 
