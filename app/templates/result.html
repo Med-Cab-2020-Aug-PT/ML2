@@ -1,12 +1,38 @@
+<!DOCTYPE html>
 <html>
-    <header>
-        <title>MARIJUANA RECOMMENDATIONS</title>
-    </header>
+<head>
+    <script src="https://kit.fontawesome.com/be07601cea.js" crossorigin="anonymous"></script>
+    <style>
+        button.x {
+          background-color: green !important;
+          border: none;
+          color: black !important;
+          padding: 12px 16px;
+          font-size: 30px;
+          cursor: pointer;
+          height: 31px !important; 
+          width: 33px !important; 
+        }
 
+        /* Darker background on mouse-over */
+        button.x:hover {
+          background-color: black !important;
+        }
+    </style>
+</head>
+
+<body>
+<button class ="x" style="display: none" > </button>
+<a href="/"><i class="fas fa-cannabis"></i></a>
+</body>
+
+<body>
+<header>
+    <title>MARIJUANA RECOMMENDATIONS</title>
+    </header>
         <h2>STRAIN RECOMMENDATIONS</h2>
 
         <div style="margin-bottom: 30px">
-
             <p>_id: {{ result._id}}</p>
             <p>Description: {{ result.Description}}</p>
             <p>Name: {{ result.Name}}</p>
@@ -15,7 +41,7 @@
             <p>Effects: {{ result.Effects}}</p>
             <p>Flavors: {{ result.Flavors}}</p>
             <p>Nearest: {{ result.Nearest}}</p>
-
-        </div>
+      </div>
+</body>
 
 </html>

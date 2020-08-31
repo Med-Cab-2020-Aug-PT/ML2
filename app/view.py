@@ -28,6 +28,9 @@ def compute():
 
     return render_template('result.html', result=result)
 
+def goHome():
+    return render_template('home.html')
+
 
 @API.route('/name', methods=["POST"])
 def name_lookup():
@@ -38,6 +41,9 @@ def name_lookup():
     # return jsonify(bot.name_lookup(query))
     result = bot.name_lookup(query2)
     return render_template('result.html', result=result)
+
+def goHome():
+    return render_template('home.html')
 
 @API.route('/hello/')
 @API.route('/hello/<name>')

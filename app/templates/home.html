@@ -1,12 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <body>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
 
-        <div style = "float:left">
-        <h2>Looking for Recommendations?</h2>
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 5;
+  font-family: Arial;
+}
 
-        <form action="/search" method="POST" >
-            <h3>Effect 1</h3>
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 20px 20px;
+  font-size: 17px;
+  width: 50%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: black;
+  display: none;
+  padding: 100x 20px;
+  height: 100%;
+}
+
+#Recommendations{background-color: white;}
+#Strain Name {background-color: white;}
+</style>
+</head>
+
+<body>
+<button class="tablink" onclick="openPage('Recommendations', this, 'green')">Recommendations</button>
+<button class="tablink" onclick="openPage('Strain Name', this, 'green')" id="defaultOpen">Strain Name</button>
+
+<div id="Recommendations" class="tabcontent">
+  <h2>Looking for Recommendations?</h2>
+
+    <form action="/search" method="POST" >
+        <h3>Effect 1</h3>
             <label for="effects1">Choose an effect:</label>
             <select id="Effect" name="item1"/>
                 <option value="Happy">Happy</option>
@@ -25,92 +69,121 @@
             </select>
 
             <h3>Effect 2</h3>
-            <label for="effects2">Choose an effect:</label>
-            <select id="Effect" name="item2"/ >
-                <option value="Happy">Happy</option>
-                <option value="Uplifted">Uplifted</option>
-                <option value="Sleepy">Sleepy</option>
-                <option value="Aroused">Aroused</option>
-                <option value="Relaxed">Relaxed</option>
-                <option value="Creative">Creative</option>
-                <option value="Euphoric">Euphoric</option>
-                <option value="Energetic">Energetic</option>
-                <option value="Tingly">Tingly</option>
-                <option value="Talkative">Talkative</option>
-                <option value="Giggly">Giggly</option>
-                <option value="Focused">Focused</option>
-                <option value="Hungry">Hungry</option>
-            </select>
+                <label for="effects2">Choose an effect:</label>
+                <select id="Effect" name="item2"/ >
+                    <option value="Happy">Happy</option>
+                    <option value="Uplifted">Uplifted</option>
+                    <option value="Sleepy">Sleepy</option>
+                    <option value="Aroused">Aroused</option>
+                    <option value="Relaxed">Relaxed</option>
+                    <option value="Creative">Creative</option>
+                    <option value="Euphoric">Euphoric</option>
+                    <option value="Energetic">Energetic</option>
+                    <option value="Tingly">Tingly</option>
+                    <option value="Talkative">Talkative</option>
+                    <option value="Giggly">Giggly</option>
+                    <option value="Focused">Focused</option>
+                    <option value="Hungry">Hungry</option>
+                </select>
 
             <h3>Flavor 1</h3>
-            <label for="flavor">Choose a flavor:</label>
-            <select id="Flavors" name="item3"/ >
-                <option value="Ammonia">Ammonia</option>
-                <option value="Apple">Apple</option>
-                <option value="Apricot">Apricot</option>
-                <option value="Berry">Berry</option>
-                <option value="Blueberry">Blueberry</option>
-                <option value="Butter">Butter</option>
-                <option value="Cheese">Cheese</option>
-                <option value="Chemical">Chemical</option>
-                <option value="Chestnut">Chestnut</option>
-                <option value="Citrus">Citrus</option>
-                <option value="Coffee">Coffee</option>
-                <option value="Diesel">Diesel</option>
-                <option value="Earthy">Earthy</option>
-                <option value="Flowery">Flowery</option>
-                <option value="Fruit">Fruit</option>
-                <option value="Grape">Grape</option>
-                <option value="Grapefruit">Grapefruit</option>
-                <option value="Herbal">Herbal</option>
-                <option value="Honey">Honey</option>
-                <option value="Lavender">Lavender</option>
-                <option value="Lemon">Lemon</option>
-                <option value="Lime">Lime</option>
-                <option value="Mango">Mango</option>
-                <option value="Menthol">Menthol</option>
-                <option value="Mint">Mint</option>
-                <option value="Nutty">Nutty</option>
-                <option value="Orange">Orange</option>
-                <option value="Peach">Peach</option>
-                <option value="Pear">Pear</option>
-                <option value="Pepper">Pepper</option>
-                <option value="Pine">Pine</option>
-                <option value="Pineapple">Pineapple</option>
-                <option value="Plum">Plum</option>
-                <option value="Pungent">Pungent</option>
-                <option value="Rose">Rose</option>
-                <option value="Sage">Sage</option>
-                <option value="Skunk">Skunk</option>
-                <option value="Spicy">Spicy</option>
-                <option value="Strawberry">Strawberry</option>
-                <option value="Sweet">Sweet</option>
-                <option value="Tar">Tar</option>
-                <option value="Tea">Tea</option>
-                <option value="Tobacco">Tobacco</option>
-                <option value="Tree">Tree</option>
-                <option value="Tropical">Tropical</option>
-                <option value="Vanilla">Vanilla</option>
-                <option value="Violet">Violet</option>
-                <option value="Woody">Woody</option>
-            </select>
+                <label for="flavor">Choose a flavor:</label>
+                <select id="Flavors" name="item3"/ >
+                    <option value="Ammonia">Ammonia</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Apricot">Apricot</option>
+                    <option value="Berry">Berry</option>
+                    <option value="Blueberry">Blueberry</option>
+                    <option value="Butter">Butter</option>
+                    <option value="Cheese">Cheese</option>
+                    <option value="Chemical">Chemical</option>
+                    <option value="Chestnut">Chestnut</option>
+                    <option value="Citrus">Citrus</option>
+                    <option value="Coffee">Coffee</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Earthy">Earthy</option>
+                    <option value="Flowery">Flowery</option>
+                    <option value="Fruit">Fruit</option>
+                    <option value="Grape">Grape</option>
+                    <option value="Grapefruit">Grapefruit</option>
+                    <option value="Herbal">Herbal</option>
+                    <option value="Honey">Honey</option>
+                    <option value="Lavender">Lavender</option>
+                    <option value="Lemon">Lemon</option>
+                    <option value="Lime">Lime</option>
+                    <option value="Mango">Mango</option>
+                    <option value="Menthol">Menthol</option>
+                    <option value="Mint">Mint</option>
+                    <option value="Nutty">Nutty</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Peach">Peach</option>
+                    <option value="Pear">Pear</option>
+                    <option value="Pepper">Pepper</option>
+                    <option value="Pine">Pine</option>
+                    <option value="Pineapple">Pineapple</option>
+                    <option value="Plum">Plum</option>
+                    <option value="Pungent">Pungent</option>
+                    <option value="Rose">Rose</option>
+                    <option value="Sage">Sage</option>
+                    <option value="Skunk">Skunk</option>
+                    <option value="Spicy">Spicy</option>
+                    <option value="Strawberry">Strawberry</option>
+                    <option value="Sweet">Sweet</option>
+                    <option value="Tar">Tar</option>
+                    <option value="Tea">Tea</option>
+                    <option value="Tobacco">Tobacco</option>
+                    <option value="Tree">Tree</option>
+                    <option value="Tropical">Tropical</option>
+                    <option value="Vanilla">Vanilla</option>
+                    <option value="Violet">Violet</option>
+                    <option value="Woody">Woody</option>
+                </select>
 
-            <br>
-            <br>
+                <br>
+                <br>
 
-            <p>Anything Else? <input type="text" name="item4" /> </p>
-            <br>
-	        <input type="submit"/>
-        </form>
-        </div>
+                <p>Anything Else? <input type="text" name="item4" /> </p>
+                <br>
+                <input type="submit" />
+    </form>
+</div>
 
-        <div style = "float:right">
-        <h2>Want to Know More About a Particular Strain?</h2>
-            <form action="/name" method="POST">
-            <p>Strain <input type="text" name="query2" /></p>
-            <br>
-            <input type="submit"/>
-            </form>
-        </div>
-    </body>
+<div id="Strain Name" class="tabcontent">
+<br>
+  	<h2>Looking for a Particular Strain?</h2>
+  	<form action="/name" method="POST">
+  		<p>Strain Name:  <input type="text" name="query2" /></p>
+  		<br>
+  		<input type="submit"/>
+  	</form>
+</div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+<!-- FOOTER -->
+<div id="footer">
+    <hr>
+    &copy; Copyright 2020 Jisha Obukwelu |
+    <a href="https://github.com/jiobu1/">source</a>
+  </div>
+</div>
+
+
+</body>
 </html>
