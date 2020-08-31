@@ -1,0 +1,23 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+flask = "*"
+flask-pymongo = "*"
+gunicorn = "*"
+pandas = "*"
+python-dotenv = "*"
+numpy = "*"
+scikit-learn = "*"
+spacy = "*"
+psycopg2-binary = "*"
+dnspython = "*"
+pymongo = "*"
+requests = "*"
+
+[requires]
+python_version = "3.7"
