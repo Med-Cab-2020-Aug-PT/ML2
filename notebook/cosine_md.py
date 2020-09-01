@@ -53,10 +53,10 @@ print(dtm.head())
 # Create cosine_similarity function
 def cosine_recommender(user_input):
 
-    user_dtm = pd.DataFrame(tfidf.transform(user_input).todense(), columns=tfidf.get_feature_names())
+    user_dtm = pd.DataFrame(tfidf.transform([user_input]).todense(), columns=tfidf.get_feature_names())
     rec_dtm = dtm.append(user_dtm).reset_index(drop=True)
     cosine_df = pd.DataFrame(cosine_similarity(rec_dtm))
-    recommendations = cosine_df[cosine_df[0] < 1][0].sort_values(ascending=False)[:5]
+    recommendations = cosine_df[cosine_df[0] < 1][len(cosine_df)-1].sort_values(ascending=False)[:5]
 
     return recommendations
 
